@@ -1,23 +1,23 @@
 import RPi.GPIO as GPIO
-import time
+from time import sleep
 
 buzzer = 10
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(buzzer, GPIO.OUT)
 
+pwm = GPIO.PWM(buzzer,1)
+
 try:
-    # pwm = GPIO.PWM(buzzer, 0.5)
-    # pwm.start(1)
-    # while 1:
-    #     for dc in range(0, 101, 5):
-    #     pwm.ChangeDutyCycle(dc)
-    #     time.sleep(0.1)
-    GPIO.output(buzzer, GPIO.HIGH)
-    time.sleep(1)
-    GPIO.output(buzzer, GPIO.LOW)
-    time.sleep(3)
+    while 1:
+        for frequency in range(1, 5001, 1000):
+            pwm.start(50)
+            pwm.ChangeFrequency(frequency)
+            sleep(1)
+            pwm.stop()
+            sleep(1)
 except KeyboardInterrupt:
     pass
-# pwm.stop()
+
+pwm.stop()
 GPIO.cleanup()
