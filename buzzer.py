@@ -6,7 +6,7 @@ buzzer = 10
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(buzzer, GPIO.OUT)
 
-pwm = GPIO.PWM(buzzer,1)
+pwm = GPIO.PWM(buzzer, 1)
 
 try:
     while 1:
