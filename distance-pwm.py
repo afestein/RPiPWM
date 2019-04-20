@@ -37,7 +37,8 @@ try:
 
         # map distance to hertz, e.g. 10cm equals 1000hz
         frequency = distance * 100
-        pwm.ChangeFrequency(frequency)
+        if frequency > 0:
+            pwm.ChangeFrequency(frequency)
 
         if distance > 2 and distance < 100:
             print("Distance:", distance, "cm")
